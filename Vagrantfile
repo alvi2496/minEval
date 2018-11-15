@@ -6,14 +6,6 @@ $apt_script = <<SCRIPT
    sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev libmysqlclient-dev
 SCRIPT
 
-$python_env_setup = <<SCRIPT
-  if [ ! -d ~/pyenvilder ]; then
-    git clone https://github.com/alvi2496/pyenvilder.git ~/pyenvilder
-    cd ~/pyenvilder
-    ./build.sh -v #{PYTHON_V} -n minEval
-  fi
-SCRIPT
-
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/xenial64"
   # config.vm.box_check_update = false
@@ -28,5 +20,4 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provision :shell, inline: $apt_script
-  config.vm.provision :shell, privileged: false, inline: $python_env_setup
 end
