@@ -1,7 +1,7 @@
 import data.input as input
-from paradigms.discovery.prediction.classification import naive_bayes, random_forest
+from paradigms.discovery.prediction.classification import naive_bayes, random_forest, svm
 from paradigms.discovery.prediction.regression import logistic_regression
-from sklearn import model_selection, preprocessing, metrics, svm
+from sklearn import model_selection, preprocessing, metrics
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn import decomposition
 
@@ -22,3 +22,4 @@ train_data_count, test_data_count = input.count_vectorize(data, train_data, test
 print("Naive Bayes: ", naive_bayes.accuracy(train_data_count, train_label, test_data_count, test_label))
 print("Logistic Regression: ", logistic_regression.accuracy(train_data_count, train_label, test_data_count, test_label))
 print("Random Forest: ", random_forest.accuracy(train_data_count, train_label, test_data_count, test_label))
+print("Support Vector Machine: ", svm.accuracy(train_data_count, train_label, test_data_count, test_label))
