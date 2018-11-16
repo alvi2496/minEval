@@ -1,5 +1,6 @@
 import data.input as input
-from paradigms.discovery.prediction.classification import naive_bayes, logistic_regression, random_forest
+from paradigms.discovery.prediction.classification import naive_bayes, random_forest
+from paradigms.discovery.prediction.regression import logistic_regression
 from sklearn import model_selection, preprocessing, metrics, svm
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn import decomposition
