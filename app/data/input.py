@@ -1,5 +1,5 @@
 import pandas
-from sklearn import model_selection
+from sklearn import model_selection, preprocessing
 from sklearn.feature_extraction.text import CountVectorizer
 
 def input_file_path():
@@ -10,11 +10,11 @@ def input_file_path():
 
 def structure(data_file_path):
 	data = pandas.read_csv(data_file_path, sep=",", header=None, names=['text', 'label'])
-	return data.head()
+	return data
 
 def data_for_evaluation(data):
 	train_data, test_data, train_label, test_label = model_selection.train_test_split(data['text'], data['label'])
-	return train_data.head(), test_data.head(), train_label.head(), test_label.head()
+	return train_data, test_data, train_label, test_label
 
 def count_vectorize(data, train_data, test_data):
 	# Create a count vectorizer object
@@ -25,4 +25,10 @@ def count_vectorize(data, train_data, test_data):
 	train_data_count = count_vector.transform(train_data)
 	test_data_count = count_vector.transform(test_data)
 
-	return train_data_count, test_data_count	
+	return train_data_count, test_data_count
+
+def encode_target_variable(train_label, test_label):
+	encoder = preprocessing.LabelEncoder()
+	train_label = encoder.fit_transform(train_label)
+	test_label = encoder.fit_transform(test_label)
+	return train_label, test_label		
