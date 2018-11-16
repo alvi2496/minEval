@@ -8,7 +8,4 @@ def train(classifier, train_data, train_label, test_data, test_label, is_neural_
     # predict the labels on validation dataset
     predictions = classifier.predict(test_data)
     
-    if is_neural_net:
-        predictions = predictions.argmax(axis=-1)
-    
     return metrics.accuracy_score(predictions, test_label)
