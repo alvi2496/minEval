@@ -2,4 +2,4 @@
 test.sh
 .vagrant/
 activate.sh
-*/__pycache__
+*__pycache__
