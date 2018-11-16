@@ -7,6 +7,9 @@ from sklearn import decomposition
 import xgboost, numpy, textblob, string
 from keras.preprocessing import text, sequence
 from keras import layers, models, optimizers
+import warnings
+
+warnings.filterwarnings("ignore")
 
 data = input.structure(input.input_file_path())
 
