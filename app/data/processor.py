@@ -1,6 +1,6 @@
 import pandas
 from sklearn import model_selection, preprocessing
-from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 
 def input_file_path():
 	# data_file_path = input("Path to data file: ")
@@ -30,8 +30,22 @@ def count_vectorize(data, train_data, test_data):
 def count_vectorizer(data):
 	count_vect = CountVectorizer()
 	train_data_count = count_vect.fit_transform(data['text'])
-	# train_label_count = encoder.fit_transform(data.label)
-	return train_data_count	
+	
+	return train_data_count
+
+def tf_idf_vectorize(data, train_data, test_data):
+	tf_idf_vector = TfidfVectorizer(analyzer='word', token_pattern=r'\w{1,}', max_features=5000)
+	tf_idf_vector.fit(data['text'])
+	train_data_tf_idf =  tf_idf_vector.transform(train_data)
+	test_data_tf_idf =  tf_idf_vector.transform(test_data)
+
+	return train_data_tf_idf, test_data_tf_idf
+
+def tf_idf_vectorizer(data):
+	count_vect = CountVectorizer()
+	train_data_count = count_vect.fit_transform(data['text'])
+	
+	return train_data_tf_idf			
 
 def encode_target_variable(train_label, test_label):
 	encoder = preprocessing.LabelEncoder()

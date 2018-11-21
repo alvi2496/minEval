@@ -3,7 +3,6 @@ import data.processor as processor
 # from paradigms.discovery.prediction.regression import logistic_regression
 import paradigms.verification.main as verifier
 from sklearn import model_selection, preprocessing, metrics
-from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn import decomposition
 
 import xgboost, numpy, textblob, string
