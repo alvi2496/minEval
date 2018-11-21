@@ -25,4 +25,6 @@ def split_validation(data):
 	return result_with_count, result_with_tf_idf
 
 def cross_verification(data, n):
-	return verifier.cross_verifier(svm.SVC(), processor.count_vectorizer(data), data['label'], n) 		
+	count_resut_array, count_result = verifier.cross_verifier(svm.SVC(), processor.count_vectorizer(data), data['label'], n)
+	tf_idf_result_array, tf_idf_result = verifier.cross_verifier(svm.SVC(), processor.tf_idf_vectorizer(data), data['label'], n)
+	return count_resut_array, count_result, tf_idf_result_array, tf_idf_result  		
