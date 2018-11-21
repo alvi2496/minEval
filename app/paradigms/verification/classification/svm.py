@@ -19,4 +19,7 @@ def split_validation(data):
 
 	result = verifier.split_verifier(trained_classifier, test_data_count, test_label)
 
-	return result	
+	return result
+
+def cross_verification(data, n):
+	return verifier.cross_verifier(svm.SVC(), processor.count_vectorizer(data), data['label'], n) 		
