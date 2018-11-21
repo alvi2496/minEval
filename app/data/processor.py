@@ -42,8 +42,8 @@ def tf_idf_vectorize(data, train_data, test_data):
 	return train_data_tf_idf, test_data_tf_idf
 
 def tf_idf_vectorizer(data):
-	count_vect = CountVectorizer()
-	train_data_count = count_vect.fit_transform(data['text'])
+	tf_idf_vector = TfidfVectorizer()
+	train_data_tf_idf = tf_idf_vector.fit_transform(data['text'])
 	
 	return train_data_tf_idf			
 
