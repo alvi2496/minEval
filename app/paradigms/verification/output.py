@@ -1,5 +1,7 @@
 def initialize():
 	result = {
+		'algorithm_names': ['Naive Bayes', 'Random Forest', 'SVM', 'Logistic Regression'],
+		'feature_names': ['Count Vector', 'TF-IDF Vector'],
 		'split': {
 			'naive_bayes': {
 				'count_vector': 0,
