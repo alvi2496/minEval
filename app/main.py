@@ -1,6 +1,4 @@
 import data.processor as processor
-# from paradigms.discovery.prediction.classification import naive_bayes, random_forest, svm
-# from paradigms.discovery.prediction.regression import logistic_regression
 import paradigms.verification.controller as verifier
 from sklearn import model_selection, preprocessing, metrics
 from sklearn import decomposition
@@ -12,6 +10,8 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
-data = processor.structure(processor.input_file_path())
+data_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSGhxSbBeeXdkRdBVQ9wSL1aJTs52SXV3NKfcfoX1wI89XDCJMC5tW0HZk5HYdh2xT0DtufMLSn9hHX/pub?gid=1193567183&single=true&output=csv"
+
+data = processor.structure(processor.input_file_path(data_url))
 
 verifier.verify(data)
