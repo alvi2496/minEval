@@ -1,7 +1,7 @@
 import data.processor as processor
 # from paradigms.discovery.prediction.classification import naive_bayes, random_forest, svm
 # from paradigms.discovery.prediction.regression import logistic_regression
-import paradigms.verification.main as verifier
+import paradigms.verification.controller as verifier
 from sklearn import model_selection, preprocessing, metrics
 from sklearn import decomposition
 
