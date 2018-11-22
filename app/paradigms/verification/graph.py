@@ -2,18 +2,18 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def autolabel(rects, ax):
-	    for rect in rects:
-	        height = rect.get_height()
-	        ax.text(rect.get_x() + rect.get_width()/2., 1.05*height, height, ha='center', va='bottom')        
+    for rect in rects:
+        height = rect.get_height()
+        ax.text(rect.get_x() + rect.get_width()/2., 1.05*height, height, ha='center', va='bottom')        
 
 def show(result):
-	N = len(result['algorithm_names'])
+	fig = plt.figure(1)
 
+	N = len(result['algorithm_names'])
 	ind = np.arange(N) 
 	width = .20
 
-	fig_1 = plt.figure() 
-	ax_1 = fig_1.add_subplot(111)
+	ax_1 = fig.add_subplot(211)
 
 	count_vectors = []
 	for algo in result['split']:
@@ -28,7 +28,7 @@ def show(result):
 	rects2 = ax_1.bar(ind + width, tf_idf_vectors, width, color='g')
 
 	ax_1.set_ylabel('Accuracy')
-	ax_1.set_xlabel('Algotithms grouped by feature of data')
+	# ax_1.set_xlabel('Algotithms grouped by feature of data')
 	ax_1.set_title('Accuracy using split verification')
 	ax_1.set_xticks(ind + width / 2)
 	ax_1.set_xticklabels(result['algorithm_names'])
@@ -38,8 +38,7 @@ def show(result):
 	autolabel(rects1, ax_1)
 	autolabel(rects2, ax_1)
 	
-	fig_2 = plt.figure()
-	ax_2 = fig_2.add_subplot(111)
+	ax_2 = fig.add_subplot(212)
 
 	count_vectors = []
 	for algo in result['cross']:
@@ -54,7 +53,7 @@ def show(result):
 	rects2 = ax_2.bar(ind + width, tf_idf_vectors, width, color='g')
 
 	ax_2.set_ylabel('Accuracy')
-	ax_2.set_xlabel('Algotithms grouped by feature of data')
+	# ax_2.set_xlabel('Algotithms grouped by feature of data')
 	ax_2.set_title('Accuracy using cross verification')
 	ax_2.set_xticks(ind + width / 2)
 	ax_2.set_xticklabels(result['algorithm_names'])

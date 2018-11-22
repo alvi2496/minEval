@@ -1,11 +1,5 @@
 import data.processor as processor
 import paradigms.verification.controller as verifier
-from sklearn import model_selection, preprocessing, metrics
-from sklearn import decomposition
-
-import xgboost, numpy, textblob, string
-from keras.preprocessing import text, sequence
-from keras import layers, models, optimizers
 import warnings
 
 warnings.filterwarnings("ignore")
