@@ -1,3 +1,5 @@
+from paradigms.verification import graph
+
 def represent(result):
 	print("---------------------------------------------------")
 	print("Spliting dataset into train and test")
@@ -54,3 +56,5 @@ def represent(result):
 	print("Result of cross validation:", result['cross']['logistic_regression']['tf_idf_vector']['array'])
 	print("Average of cross validation:", result['cross']['logistic_regression']['tf_idf_vector']['mean'])
 	print("---------------------------------------------------")
+
+	graph.show(result)
