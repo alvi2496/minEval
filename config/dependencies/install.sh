@@ -7,3 +7,4 @@ pip3 install xgboost
 pip install -U textblob
 pip install --upgrade tensorflow
 pip install keras
+pip install -U nltk
