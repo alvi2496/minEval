@@ -7,15 +7,15 @@ def verify(data, test_size_for_split, k_fold_for_cross):
 	result = output.initialize()
 
 	result['split']['decision_tree']['count_vector'], result['split']['decision_tree']['tf_idf_vector'] = \
-	decision_tree.split_validation(data)
+	decision_tree.split_validation(data, test_size_for_split)
 	result['split']['naive_bayes']['count_vector'], result['split']['naive_bayes']['tf_idf_vector'] = \
-	naive_bayes.split_validation(data)
+	naive_bayes.split_validation(data, test_size_for_split)
 	result['split']['random_forest']['count_vector'], result['split']['random_forest']['tf_idf_vector'] = \
-	random_forest.split_validation(data)
+	random_forest.split_validation(data, test_size_for_split)
 	result['split']['svm']['count_vector'], result['split']['svm']['tf_idf_vector'] = \
-	svm.split_validation(data)
+	svm.split_validation(data, test_size_for_split)
 	result['split']['logistic_regression']['count_vector'], result['split']['logistic_regression']['tf_idf_vector'] = \
-	logistic_regression.split_validation(data)
+	logistic_regression.split_validation(data, test_size_for_split)
 
 	result['cross']['decision_tree']['count_vector']['array'], result['cross']['decision_tree']['count_vector']['mean'], \
 	result['cross']['decision_tree']['tf_idf_vector']['array'], result['cross']['decision_tree']['tf_idf_vector']['mean'] = \

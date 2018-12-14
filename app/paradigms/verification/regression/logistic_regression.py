@@ -3,8 +3,8 @@ import paradigms.verification.verifier as verifier
 import data.processor as processor
 from sklearn import linear_model
 
-def split_validation(data):
-	train_data, test_data, train_label, test_label = processor.data_for_evaluation(data)
+def split_validation(data, test_size_for_split):
+	train_data, test_data, train_label, test_label = processor.data_for_evaluation(data, test_size_for_split)
 
 	train_data_count, test_data_count = processor.count_vectorize(data, train_data, test_data)
 	train_data_tf_idf, test_data_tf_idf = processor.tf_idf_vectorize(data, train_data, test_data)

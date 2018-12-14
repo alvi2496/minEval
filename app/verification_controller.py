@@ -8,4 +8,4 @@ data_url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSGhxSbBeeXdkRdBVQ9w
 
 data = processor.process(data_url)
 
-verifier.verify(data, 0.3, 10)
+verifier.verify(data, 0.4, 10)
