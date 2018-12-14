@@ -30,7 +30,7 @@ def process(data_url):
 	return remove_stopwords(structure(input_file_path(data_url)))		
 
 def data_for_evaluation(data):
-	train_data, test_data, train_label, test_label = model_selection.train_test_split(data['text'], data['label'], test_size=0.2, random_state=0)
+	train_data, test_data, train_label, test_label = model_selection.train_test_split(data['text'], data['label'], test_size=0.3, random_state=0)
 	return train_data, test_data, train_label, test_label
 
 def count_vectorize(data, train_data, test_data):
