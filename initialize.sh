@@ -1,4 +1,7 @@
-#!/bin/bash -i
+#!/bin/bash -
+
+sudo apt-get update
+sudo apt-get install unzip
 
 ./config/environment/setup.sh
 
@@ -16,3 +19,5 @@ source ~/pyvirenvs/mineval/bin/activate
 EOF
 
 chmod 777 activate.sh
+
+./config/datasets/get.sh

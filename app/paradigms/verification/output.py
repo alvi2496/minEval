@@ -1,8 +1,12 @@
 def initialize():
 	result = {
-		'algorithm_names': ['Naive Bayes', 'Random Forest', 'SVM', 'Logistic Regression'],
+		'algorithm_names': ['Decision Tree','Naive Bayes', 'Random Forest', 'SVM', 'Logistic Regression'],
 		'feature_names': ['Count Vector', 'TF-IDF Vector'],
 		'split': {
+			'decision_tree': {
+				'count_vector': 0,
+				'tf_idf_vector': 0
+			},
 			'naive_bayes': {
 				'count_vector': 0,
 				'tf_idf_vector': 0
@@ -21,6 +25,16 @@ def initialize():
 			}
 		},
 		'cross': {
+			'decision_tree': {
+				'count_vector': {
+					'array': [],
+					'mean': 0,
+				},
+				'tf_idf_vector': {
+					'array': [],
+					'mean': 0
+				}
+			},
 			'naive_bayes': {
 				'count_vector': {
 					'array': [],
