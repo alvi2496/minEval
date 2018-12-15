@@ -6,31 +6,46 @@ def verify(data, test_size_for_split, k_fold_for_cross):
 
 	result = output.initialize()
 
-	result['split']['decision_tree']['count_vector'], result['split']['decision_tree']['tf_idf_vector'] = \
+	# Split Verification
+	result['algorithms']['decision_tree']['verification_methods']['split']['feature_vectors']['count']['value'], \
+	result['algorithms']['decision_tree']['verification_methods']['split']['feature_vectors']['tf-idf']['value'] = \
 	decision_tree.split_validation(data, test_size_for_split)
-	result['split']['naive_bayes']['count_vector'], result['split']['naive_bayes']['tf_idf_vector'] = \
-	naive_bayes.split_validation(data, test_size_for_split)
-	result['split']['random_forest']['count_vector'], result['split']['random_forest']['tf_idf_vector'] = \
+
+	result['algorithms']['random_forest']['verification_methods']['split']['feature_vectors']['count']['value'], \
+	result['algorithms']['random_forest']['verification_methods']['split']['feature_vectors']['tf-idf']['value'] = \
 	random_forest.split_validation(data, test_size_for_split)
-	result['split']['svm']['count_vector'], result['split']['svm']['tf_idf_vector'] = \
+
+	result['algorithms']['naive_bayes']['verification_methods']['split']['feature_vectors']['count']['value'], \
+	result['algorithms']['naive_bayes']['verification_methods']['split']['feature_vectors']['tf-idf']['value'] = \
+	naive_bayes.split_validation(data, test_size_for_split)
+
+	result['algorithms']['svm']['verification_methods']['split']['feature_vectors']['count']['value'], \
+	result['algorithms']['svm']['verification_methods']['split']['feature_vectors']['tf-idf']['value'] = \
 	svm.split_validation(data, test_size_for_split)
-	result['split']['logistic_regression']['count_vector'], result['split']['logistic_regression']['tf_idf_vector'] = \
+
+	result['algorithms']['logistic_regression']['verification_methods']['split']['feature_vectors']['count']['value'], \
+	result['algorithms']['logistic_regression']['verification_methods']['split']['feature_vectors']['tf-idf']['value'] = \
 	logistic_regression.split_validation(data, test_size_for_split)
 
-	result['cross']['decision_tree']['count_vector']['array'], result['cross']['decision_tree']['count_vector']['mean'], \
-	result['cross']['decision_tree']['tf_idf_vector']['array'], result['cross']['decision_tree']['tf_idf_vector']['mean'] = \
+	#Cross Verification
+	result['algorithms']['decision_tree']['verification_methods']['cross']['feature_vectors']['count']['value'], \
+	result['algorithms']['decision_tree']['verification_methods']['cross']['feature_vectors']['tf-idf']['value'] = \
 	decision_tree.cross_verification(data, k_fold_for_cross)
-	result['cross']['naive_bayes']['count_vector']['array'], result['cross']['naive_bayes']['count_vector']['mean'], \
-	result['cross']['naive_bayes']['tf_idf_vector']['array'], result['cross']['naive_bayes']['tf_idf_vector']['mean'] = \
-	naive_bayes.cross_verification(data, k_fold_for_cross)
-	result['cross']['random_forest']['count_vector']['array'], result['cross']['random_forest']['count_vector']['mean'], \
-	result['cross']['random_forest']['tf_idf_vector']['array'], result['cross']['random_forest']['tf_idf_vector']['mean'] = \
+
+	result['algorithms']['random_forest']['verification_methods']['cross']['feature_vectors']['count']['value'], \
+	result['algorithms']['random_forest']['verification_methods']['cross']['feature_vectors']['tf-idf']['value'] = \
 	random_forest.cross_verification(data, k_fold_for_cross)
-	result['cross']['svm']['count_vector']['array'], result['cross']['svm']['count_vector']['mean'], \
-	result['cross']['svm']['tf_idf_vector']['array'], result['cross']['svm']['tf_idf_vector']['mean'] = \
+
+	result['algorithms']['naive_bayes']['verification_methods']['cross']['feature_vectors']['count']['value'], \
+	result['algorithms']['naive_bayes']['verification_methods']['cross']['feature_vectors']['tf-idf']['value'] = \
+	naive_bayes.cross_verification(data, k_fold_for_cross)
+
+	result['algorithms']['svm']['verification_methods']['cross']['feature_vectors']['count']['value'], \
+	result['algorithms']['svm']['verification_methods']['cross']['feature_vectors']['tf-idf']['value'] = \
 	svm.cross_verification(data, k_fold_for_cross)
-	result['cross']['logistic_regression']['count_vector']['array'], result['cross']['logistic_regression']['count_vector']['mean'], \
-	result['cross']['logistic_regression']['tf_idf_vector']['array'], result['cross']['logistic_regression']['tf_idf_vector']['mean'] = \
+
+	result['algorithms']['logistic_regression']['verification_methods']['cross']['feature_vectors']['count']['value'], \
+	result['algorithms']['logistic_regression']['verification_methods']['cross']['feature_vectors']['tf-idf']['value'] = \
 	logistic_regression.cross_verification(data, k_fold_for_cross)
 
 	representer.represent(result)

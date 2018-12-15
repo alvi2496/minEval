@@ -1,6 +1,6 @@
 import re
 
-ALGORITHMS = ['Decision Tree','Naive Bayes', 'Random Forest', 'SVM', 'Logistic Regression']
+ALGORITHMS = ['Decision Tree', 'Random Forest', 'Naive Bayes', 'SVM', 'Logistic Regression']
 VERIFICATION_METHODS = ['Split', 'Cross']
 FEATURE_VECTORS = ['Count', 'TF-IDF']
 
@@ -23,6 +23,6 @@ def initialize():
 			for c in FEATURE_VECTORS:
 				result['algorithms'][ctk(a)]['verification_methods'][ctk(b)]['feature_vectors'].update([(ctk(c), {})])
 				result['algorithms'][ctk(a)]['verification_methods'][ctk(b)]['feature_vectors'][ctk(c)].update([('display_name', c), ('value', 0)])
-				
+
 	return result	
 	

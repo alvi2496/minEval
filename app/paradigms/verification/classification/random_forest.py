@@ -20,4 +20,4 @@ def split_validation(data, test_size_for_split):
 def cross_verification(data, n):
 	count_resut_array, count_result = verifier.cross_verifier(ensemble.RandomForestClassifier(), processor.count_vectorizer(data), data['label'], n)
 	tf_idf_result_array, tf_idf_result = verifier.cross_verifier(ensemble.RandomForestClassifier(), processor.tf_idf_vectorizer(data), data['label'], n)
-	return count_resut_array, count_result, tf_idf_result_array, tf_idf_result  		
+	return count_result, tf_idf_result  		
