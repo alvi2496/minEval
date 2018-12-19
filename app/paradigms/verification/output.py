@@ -25,4 +25,3 @@ def initialize():
 				result['algorithms'][ctk(a)]['verification_methods'][ctk(b)]['feature_vectors'][ctk(c)].update([('display_name', c), ('value', 0)])
 
 	return result	
-	
