@@ -4,3 +4,4 @@ test.sh
 activate.sh
 app/data/files/*
 *__pycache__
+*.ipynb_checkpoints
