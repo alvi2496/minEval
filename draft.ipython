@@ -4,6 +4,7 @@ import nltk
 from nltk.corpus import stopwords
 from sklearn import model_selection, preprocessing
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
+from sklearn.preprocessing import scale
 import numpy as np
 import matplotlib.pyplot as plt
 from keras.preprocessing import text, sequence
@@ -45,4 +46,19 @@ file_info = open(WIKI_WORDS).readline().split()
 embedded_words = {}
 for line in open(WIKI_WORDS):
     values = line.split()
-    embedded_words[values[0]] = numpy.array(values[1:], dtype='float32')
+    embedded_words[values[0]] = numpy.array(values[1:], dtype = 'float32')
+
+word_vector = np.zeros(np.array((train_data.shape[0], int(file_info[1]))))
+
+i = 0 
+
+for sentence in train_data:
+    words = sentence.split()
+    length = len(words)
+    for word in words:
+            if word in embedded_words:
+                    word_vector[i] = np.add(word_vector[i], embedded_words[word])
+    word_vector[i] = scale(word_vector[i], axis=0, with_mean=True, with_std=True, copy=True)                
+    # word_vector[i] = word_vector[i] / length
+    i += 1    
+
