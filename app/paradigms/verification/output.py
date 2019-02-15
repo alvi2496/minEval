@@ -2,7 +2,7 @@ import re
 
 ALGORITHMS = ['Decision Tree', 'Random Forest', 'Naive Bayes', 'SVM', 'Logistic Regression']
 VERIFICATION_METHODS = ['Split', 'Cross']
-FEATURE_VECTORS = ['Count', 'TF-IDF']
+FEATURE_VECTORS = ['Count', 'TF-IDF', 'Word Embedd']
 
 
 def ctk(value):

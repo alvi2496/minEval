@@ -16,10 +16,10 @@ STOPSET_WORDS = ['might', 'may', 'would', 'must', 'lgtm', 'could', 'can', 'good'
 WIKI_WORDS = 'app/data/files/wiki-news-300d-1M.vec'
 encoding="utf-8"
 WORD_DICTIONARY = {}
-# print('Loading word-embedding file and making dictionary...')
-# for line in open(WIKI_WORDS):
-#     values = line.split()
-#     WORD_DICTIONARY[values[0]] = np.array(values[1:], dtype='float64')
+print('Loading word-embedding file and making dictionary...')
+for line in open(WIKI_WORDS):
+    values = line.split()
+    WORD_DICTIONARY[values[0]] = np.array(values[1:], dtype='float64')
 
 def normalize(np_array):
 	np_array = scale(np_array, axis=0, with_mean=True, with_std=True, copy=True)

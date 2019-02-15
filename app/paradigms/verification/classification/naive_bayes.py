@@ -22,5 +22,7 @@ def cross_verification(data, feature_vectors, n):
 		feature_vectors['count'], data['label'], n)
 	tf_idf_result_array, tf_idf_result = verifier.cross_verifier(naive_bayes.MultinomialNB(), \
 		feature_vectors['tf-idf'], data['label'], n)
-	return count_result, tf_idf_result   
+	word_embedd_result_array, word_embedd_result = verifier.cross_verifier(naive_bayes.MultinomialNB(), \
+		feature_vectors['word-embedd'], data['label'], n)
+	return count_result, tf_idf_result, word_embedd_result   
 	

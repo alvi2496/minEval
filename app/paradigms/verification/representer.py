@@ -3,7 +3,7 @@ from prettytable import PrettyTable
 
 def represent(result):
 	table = PrettyTable()
-	table.field_names = ['', 'Count', 'TF-IDF']
+	table.field_names = ['', 'Count', 'TF-IDF', 'Word Embedding']
 	for algo in result['algorithms']:
 		row = [(result['algorithms'][algo]['display_name'])]
 		for vt in result['algorithms'][algo]['verification_methods']['cross']['feature_vectors']:
