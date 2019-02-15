@@ -18,52 +18,28 @@ def show(result):
 	ind = np.arange(N) 
 	width = .20
 
-	# ax_1 = fig.add_subplot(211)
-
-	# count_vectors = []
-	# for algo in result['algorithms']:
-	# 	count_vectors.append(result['algorithms'][algo]['verification_methods']['split']['feature_vectors']['count']['value'])       
-
-	# rects1 = ax_1.bar(ind, count_vectors, width, color='b')
-
-	# tf_idf_vectors = []
-	# for algo in result['algorithms']:
-	# 	tf_idf_vectors.append(result['algorithms'][algo]['verification_methods']['split']['feature_vectors']['tf-idf']['value'])
-
-	# rects2 = ax_1.bar(ind + width, tf_idf_vectors, width, color='g')
-
-	# ax_1.set_ylabel('Accuracy')
-	# # ax_1.set_xlabel('Algotithms grouped by feature of data')
-	# ax_1.set_title('Accuracy using split verification')
-	# ax_1.set_xticks(ind + width / 2)
-	# ax_1.set_xticklabels(algorithm_names)
-
-	# ax_1.legend((rects1[0], rects2[0]), feature_names)
-
-	# autolabel(rects1, ax_1)
-	# autolabel(rects2, ax_1)
-
+	ax_2 = fig.subplots()
 	count_vectors = []
 	for algo in result['algorithms']:
-		count_vectors.append(round(result['algorithms'][algo]['verification_methods']['cross']['feature_vectors']['count']['value'], 4))       
+		count_vectors.append(round(result['algorithms'][algo]['verification_methods']['cross']['feature_vectors']['count']['value'], 2))       
 
-	rects1 = fig.bar(ind, count_vectors, width, color='b')
+	rects1 = ax_2.bar(ind, count_vectors, width, color='b')
 
 	tf_idf_vectors = []
 	for algo in result['algorithms']:
-		tf_idf_vectors.append(round(result['algorithms'][algo]['verification_methods']['cross']['feature_vectors']['tf-idf']['value'], 4))
+		tf_idf_vectors.append(round(result['algorithms'][algo]['verification_methods']['cross']['feature_vectors']['tf-idf']['value'], 2))
 
-	rects2 = fig.bar(ind + width, tf_idf_vectors, width, color='g')
+	rects2 = ax_2.bar(ind + width, tf_idf_vectors, width, color='g')
 
-	fig.set_ylabel('Accuracy')
+	ax_2.set_ylabel('Accuracy')
 	# ax_2.set_xlabel('Algotithms grouped by feature of data')
-	fig.set_title('Accuracy using cross verification')
-	fig.set_xticks(ind + width / 2)
-	fig.set_xticklabels(algorithm_names)
+	ax_2.set_title('Accuracy using cross verification')
+	ax_2.set_xticks(ind + width / 2)
+	ax_2.set_xticklabels(algorithm_names)
 
-	fig.legend((rects1[0], rects2[0]), feature_names)
+	ax_2.legend((rects1[0], rects2[0]), feature_names)
 
-	# autolabel(rects1, ax_2)
-	autolabel(rects2, fig)
+	autolabel(rects1, ax_2)
+	autolabel(rects2, ax_2)
 
 	plt.show()

@@ -17,7 +17,9 @@ def split_validation(data, test_size_for_split):
 
 	return result_with_count, result_with_tf_idf
 
-def cross_verification(data, n):
-	count_resut_array, count_result = verifier.cross_verifier(tree.DecisionTreeClassifier(), processor.count_vectorizer(data), data['label'], n)
-	tf_idf_result_array, tf_idf_result = verifier.cross_verifier(tree.DecisionTreeClassifier(), processor.tf_idf_vectorizer(data), data['label'], n)
+def cross_verification(data, feature_vectors, n):
+	count_resut_array, count_result = verifier.cross_verifier(tree.DecisionTreeClassifier(), \
+		feature_vectors['count'], data['label'], n)
+	tf_idf_result_array, tf_idf_result = verifier.cross_verifier(tree.DecisionTreeClassifier(), \
+		feature_vectors['tf-idf'], data['label'], n)
 	return count_result, tf_idf_result 
