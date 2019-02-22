@@ -37,29 +37,29 @@ def normalize(np_array):
 
 def word_embed(data):
     # load the pre-trained word-embedding vectors 
-    # word_vector = np.zeros(np.array((data.shape[0], 300)))
-    # i = 0
-    # print('embedding word and converting to vector...')
-    # for sentence in data:
-    #     words = sentence.split()
-    #     # length = len(words)
-    #     for word in words:
-    #             if word in WORD_DICTIONARY:
-    #                     word_vector[i] = np.add(word_vector[i], WORD_DICTIONARY[word])
-    #     word_vector[i] = normalize(word_vector[i])                
-    #     i += 1
-    # return word_vector
-    token = text.Tokenizer()
-    token.fit_on_texts(data)
-    word_index = token.word_index
-    # word_vector = sequence.pad_sequences(token.texts_to_sequences(data), maxlen=70)
-    embedding_matrix = np.zeros((len(word_index) + 1, 300))
-    for word, i in word_index.items():
-        embedding_vector = WORD_DICTIONARY.get(word)
-        if embedding_vector is not None:
-            embedding_matrix[i] = embedding_vector
-    pdb.set_trace()        
-    return embedding_matrix
+    word_vector = np.zeros(np.array((data.shape[0], 300)))
+    i = 0
+    print('embedding word and converting to vector...')
+    for sentence in data['text']:
+        words = sentence.split()
+        # length = len(words)
+        for word in words:
+                if word in WORD_DICTIONARY:
+                        word_vector[i] = np.add(word_vector[i], WORD_DICTIONARY[word])
+        word_vector[i] = normalize(word_vector[i])                
+        i += 1
+    return word_vector
+    # token = text.Tokenizer()
+    # token.fit_on_texts(data['text'])
+    # word_index = token.word_index
+    # # word_vector = sequence.pad_sequences(token.texts_to_sequences(data), maxlen=70)
+    # embedding_matrix = np.zeros((len(word_index) + 1, 300))
+    # for word, i in word_index.items():
+    #     embedding_vector = WORD_DICTIONARY.get(word)
+    #     if embedding_vector is not None:
+    #         embedding_matrix[i] = embedding_vector
+    # pdb.set_trace()        
+    # return embedding_matrix
 
 def input_file_path(url):
 	return url.strip()
