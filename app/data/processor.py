@@ -6,6 +6,7 @@ from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from sklearn.preprocessing import scale
 from keras.preprocessing import text
 import pdb
+from progressbar import progressbar
 
 STOPSET_WORDS = ['might', 'may', 'would', 'must', 'lgtm', 'could', 'can', 'good', 'great', 'nice', 'well', 'better', 'worse', \
 	'worst', 'should', 'i', "i'll", "ill", "it's", "its", "im", "i'm", "they're", "theyre", "you're", "youre", "that's", 'btw', \
@@ -16,10 +17,11 @@ STOPSET_WORDS = ['might', 'may', 'would', 'must', 'lgtm', 'could', 'can', 'good'
 ]
 
 WIKI_WORDS = 'app/data/files/wiki-news-300d-1M.vec'
+GLOVE_WORDS = 'app/data/files/glove.42B.300d.txt'
 encoding="utf-8"
 WORD_DICTIONARY = {}
 print('Loading word-embedding file and making dictionary...')
-for line in open(WIKI_WORDS):
+for line in progressbar(open(WIKI_WORDS)):
     values = line.split()
     WORD_DICTIONARY[values[0]] = np.array(values[1:], dtype='float32')
 

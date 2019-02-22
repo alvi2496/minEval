@@ -39,7 +39,8 @@ pandocfilters==1.4.2
 parso==0.3.1  
 pexpect==4.6.0  
 pickleshare==0.7.5  
-pip==18.1   
+pip==18.1
+progressbar2==3.39.2   
 prometheus-client==0.5.0  
 prompt-toolkit==2.0.7  
 protobuf==3.6.1  
@@ -65,7 +66,8 @@ terminado==0.8.1
 testpath==0.4.2  
 textblob==0.15.2 
 tornado==5.1.1  
-traitlets==4.3.2  
+traitlets==4.3.2
+tqdm==4.31.1  
 wcwidth==0.1.7  
 webencodings==0.5.1  
 Werkzeug==0.14.1 
