@@ -40,7 +40,7 @@ def show(result):
 	ax_2.set_ylabel('Accuracy')
 	# ax_2.set_xlabel('Algotithms grouped by feature of data')
 	ax_2.set_title('Accuracy using cross verification')
-	ax_2.set_xticks(ind + width + width / 3)
+	ax_2.set_xticks(ind + width + width / 3 )
 	ax_2.set_xticklabels(algorithm_names)
 
 	ax_2.legend((rects1[0], rects2[0], rects3[0]), feature_names)

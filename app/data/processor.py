@@ -4,6 +4,8 @@ from nltk.corpus import stopwords
 from sklearn import model_selection, preprocessing
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from sklearn.preprocessing import scale
+from keras.preprocessing import text
+import pdb
 
 STOPSET_WORDS = ['might', 'may', 'would', 'must', 'lgtm', 'could', 'can', 'good', 'great', 'nice', 'well', 'better', 'worse', \
 	'worst', 'should', 'i', "i'll", "ill", "it's", "its", "im", "i'm", "they're", "theyre", "you're", "youre", "that's", 'btw', \
@@ -19,7 +21,11 @@ WORD_DICTIONARY = {}
 print('Loading word-embedding file and making dictionary...')
 for line in open(WIKI_WORDS):
     values = line.split()
-    WORD_DICTIONARY[values[0]] = np.array(values[1:], dtype='float64')
+    WORD_DICTIONARY[values[0]] = np.array(values[1:], dtype='float32')
+
+# token = text.Tokenizer()
+# token.fit_on_texts(trainDF['text'])
+# word_index = token.word_index
 
 def normalize(np_array):
 	np_array = scale(np_array, axis=0, with_mean=True, with_std=True, copy=True)
@@ -31,18 +37,29 @@ def normalize(np_array):
 
 def word_embed(data):
     # load the pre-trained word-embedding vectors 
-    word_vector = np.zeros(np.array((data.shape[0], 300)))
-    i = 0
-    print('embedding word and converting to vector...')
-    for sentence in data:
-        words = sentence.split()
-        # length = len(words)
-        for word in words:
-                if word in WORD_DICTIONARY:
-                        word_vector[i] = np.add(word_vector[i], WORD_DICTIONARY[word])
-        word_vector[i] = normalize(word_vector[i])                
-        i += 1
-    return word_vector
+    # word_vector = np.zeros(np.array((data.shape[0], 300)))
+    # i = 0
+    # print('embedding word and converting to vector...')
+    # for sentence in data:
+    #     words = sentence.split()
+    #     # length = len(words)
+    #     for word in words:
+    #             if word in WORD_DICTIONARY:
+    #                     word_vector[i] = np.add(word_vector[i], WORD_DICTIONARY[word])
+    #     word_vector[i] = normalize(word_vector[i])                
+    #     i += 1
+    # return word_vector
+    token = text.Tokenizer()
+    token.fit_on_texts(data)
+    word_index = token.word_index
+    # word_vector = sequence.pad_sequences(token.texts_to_sequences(data), maxlen=70)
+    embedding_matrix = np.zeros((len(word_index) + 1, 300))
+    for word, i in word_index.items():
+        embedding_vector = WORD_DICTIONARY.get(word)
+        if embedding_vector is not None:
+            embedding_matrix[i] = embedding_vector
+    pdb.set_trace()        
+    return embedding_matrix
 
 def input_file_path(url):
 	return url.strip()
@@ -87,7 +104,7 @@ def count_vectorizer(data):
 	return train_data_count
 
 def tf_idf_vectorize(data, train_data, test_data):
-	tf_idf_vector = TfidfVectorizer(analyzer='word', token_pattern=r'\w{1,}', max_features=5000)
+	tf_idf_vector = TfidfVectorizer(analyzer='word', token_pattern=r'\w{1,}', ngram_range= (2,3), max_features=5000)
 	tf_idf_vector.fit(data['text'])
 	train_data_tf_idf =  tf_idf_vector.transform(train_data)
 	test_data_tf_idf =  tf_idf_vector.transform(test_data)
