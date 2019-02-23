@@ -48,7 +48,7 @@ def word_embed(data):
         for word in words:
                 if word in WORD_DICTIONARY:
                         word_vector[i] = np.add(word_vector[i], WORD_DICTIONARY[word])
-        word_vector[i] = normalize(word_vector[i])                
+        # word_vector[i] = normalize(word_vector[i])                
         i += 1
     return word_vector
     # token = text.Tokenizer()

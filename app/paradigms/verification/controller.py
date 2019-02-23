@@ -24,8 +24,7 @@ def verify(data, folds):
 	random_forest.cross_verification(data, feature_vectors, folds)
 
 	result['algorithms']['naive_bayes']['verification_methods']['cross']['feature_vectors']['count']['value'], \
-	result['algorithms']['naive_bayes']['verification_methods']['cross']['feature_vectors']['tf-idf']['value'], \
-	result['algorithms']['naive_bayes']['verification_methods']['cross']['feature_vectors']['word_embedd']['value'] = \
+	result['algorithms']['naive_bayes']['verification_methods']['cross']['feature_vectors']['tf-idf']['value'] = \
 	naive_bayes.cross_verification(data, feature_vectors, folds)
 
 	result['algorithms']['svm']['verification_methods']['cross']['feature_vectors']['count']['value'], \
