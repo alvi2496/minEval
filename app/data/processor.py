@@ -7,6 +7,7 @@ from sklearn.preprocessing import scale
 from keras.preprocessing import text
 import pdb
 from progressbar import progressbar
+from imblearn.over_sampling import SMOTE
 
 STOPSET_WORDS = ['might', 'may', 'would', 'must', 'lgtm', 'could', 'can', 'good', 'great', 'nice', 'well', 'better', 'worse', \
 	'worst', 'should', 'i', "i'll", "ill", "it's", "its", "im", "i'm", "they're", "theyre", "you're", "youre", "that's", 'btw', \
@@ -124,3 +125,8 @@ def encode_target_variable(train_label, test_label):
 	train_label = encoder.fit_transform(train_label)
 	test_label = encoder.fit_transform(test_label)
 	return train_label, test_label		
+
+
+def oversample(X, Y):
+	sm = SMOTE(random_state=42)
+	return sm.fit_resample(X, Y)
